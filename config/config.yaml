@@ -1,0 +1,104 @@
+# Website Crawler Configuration
+
+crawler:
+  # Define interactive element tags to crawl
+  element_tags:
+    - button
+    - a
+    - input
+    - select
+    - textarea
+    - [img, data-testid]  # img tags with data-testid attribute
+
+  # Exclude elements with these attributes
+  exclude_attributes:
+    - type: hidden
+    - aria-hidden: "true"
+    - style: display:none
+
+  # Request timeout in seconds
+  timeout: 10
+
+  # User agent for requests
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+
+selenium:
+  # Browser type: chrome, firefox, edge
+  browser: chrome
+  
+  # Run in headless mode (no GUI)
+  headless: false
+  
+  # Wait for element to be present (seconds)
+  implicit_wait: 5
+  
+  # Page load timeout (seconds)
+  page_load_timeout: 20
+  
+  # Disable images for faster loading
+  disable_images: false
+
+authentication:
+  # Enable authentication for crawling protected pages
+  enabled: false
+  
+  # Login page URL
+  login_url: "https://katalon-demo-cura.herokuapp.com/profile.php#login"
+  
+  # Credentials
+  username: "John Doe"
+  password: "ThisIsNotAPassword"
+  
+  # CSS selectors for form fields (customize per site)
+  username_field: "input[name='username']"  # or input[name='email'], #username, etc.
+  password_field: "input[name='password']"  # or #password, input[type='password'], etc.
+  login_button: "button[type='submit']"     # or button.login-btn, #login-btn, etc.
+  
+  # CSS selector to wait for after successful login
+  # Leave empty to just wait 3 seconds after login
+  wait_for_element: ".dashboard"  # or body.authenticated, #content, etc.
+  
+  # Cookie file path (for reusing sessions)
+  # If set, loads cookies from file instead of logging in
+  cookie_file: "cookies.json"
+  
+  # Save cookies after login for future reuse
+  save_cookies: false
+  save_cookies_file: "cookies.json"
+
+locator:
+  # Generate these locator types
+  types:
+    - xpath
+    - css_selector
+    - id
+    - name
+    - class_name
+  
+  # Validate uniqueness of generated locators
+  validate_uniqueness: true
+  
+  # Include element attributes in output
+  include_attributes: true
+
+export:
+  # Default export format: csv, json, excel
+  default_format: json
+  
+  # Include these columns in output
+  columns:
+    - tag_name
+    - element_text
+    - element_type
+    - xpath
+    - css_selector
+    - attributes
+    - is_visible
+    - is_clickable
+
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: INFO
+  
+  # Log file path
+  file: logs/crawler.log

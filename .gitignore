@@ -1,0 +1,72 @@
+# Python and project-specific files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Logs
+logs/
+*.log
+
+# Output files
+output/
+test_output/
+*.csv
+*.json
+*.xlsx
+*.py~
+
+# Browser drivers
+chromedriver
+geckodriver
+chromedriver.exe
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Project-specific
+config/chrome_driver_path.txt
