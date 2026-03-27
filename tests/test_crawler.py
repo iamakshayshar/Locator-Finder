@@ -1,7 +1,7 @@
 """Test suite for Web Crawler module"""
 
 import unittest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import patch, MagicMock
 from src.crawler import WebCrawler
 
 
@@ -21,26 +21,6 @@ class TestWebCrawler(unittest.TestCase):
         """Test crawler initialization"""
         self.assertEqual(self.crawler.headless, True)
         self.assertEqual(self.crawler.timeout, 10)
-        self.assertEqual(len(self.crawler.visited_urls), 0)
-
-    def test_is_valid_url(self):
-        """Test URL validation"""
-        base_url = "https://example.com"
-
-        # Valid URLs
-        self.assertTrue(
-            self.crawler._is_valid_url("https://example.com/page", base_url)
-        )
-        self.assertTrue(
-            self.crawler._is_valid_url("https://example.com/page/", base_url)
-        )
-
-        # Invalid URLs
-        self.assertFalse(self.crawler._is_valid_url("#anchor", base_url))
-        self.assertFalse(self.crawler._is_valid_url("javascript:void(0)", base_url))
-        self.assertFalse(
-            self.crawler._is_valid_url("https://other-domain.com", base_url)
-        )
 
     @patch("src.crawler.BeautifulSoup")
     def test_extract_elements(self, mock_bs):
@@ -58,19 +38,6 @@ class TestWebCrawler(unittest.TestCase):
 
         self.assertGreater(len(elements), 0)
         self.assertEqual(elements[0]["tag_name"], "button")
-
-
-class TestWebCrawlerIntegration(unittest.TestCase):
-    """Integration tests for WebCrawler"""
-
-    @patch("src.crawler.webdriver.Chrome")
-    def test_context_manager(self, mock_driver):
-        """Test context manager functionality"""
-        with WebCrawler() as crawler:
-            self.assertIsNotNone(crawler)
-
-        # Driver should be closed
-        # This is a simplified test
 
 
 class TestWebCrawlerInteractiveMode(unittest.TestCase):
@@ -115,10 +82,10 @@ class TestWebCrawlerInteractiveMode(unittest.TestCase):
                             mock_driver.title = "Home"
                             mock_extract.return_value = [{"tag": "button"}]
                             mock_hash.return_value = "abc123"
-                            
+
                             self.crawler.driver = mock_driver
                             state = self.crawler.get_current_page_state()
-                            
+
                             self.assertEqual(state["status"], "success")
                             self.assertEqual(len(state["elements"]), 1)
                             self.assertIn("page_name", state)
@@ -129,10 +96,10 @@ class TestWebCrawlerInteractiveMode(unittest.TestCase):
         with patch.object(self.crawler, '_initialize_driver'):
             with patch.object(self.crawler, 'driver') as mock_driver:
                 mock_driver.page_source = "<html><button>Click me</button></html>"
-                
+
                 self.crawler.driver = mock_driver
                 hash1 = self.crawler._get_page_hash()
-                
+
                 # Hash should be consistent
                 hash2 = self.crawler._get_page_hash()
                 self.assertEqual(hash1, hash2)

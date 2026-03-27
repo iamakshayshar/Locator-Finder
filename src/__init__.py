@@ -1,8 +1,8 @@
 """
-Website Crawler - Generate unique locators for automation testers
+Website Crawler - Interactive mode locator generator for automation testers
 """
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 __author__ = "Automation Tester Team"
 
 from src.crawler import WebCrawler

@@ -19,14 +19,11 @@ crawler:
   # Request timeout in seconds
   timeout: 10
 
-  # User agent for requests
-  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-
 selenium:
-  # Browser type: chrome, firefox, edge
+  # Browser type: chrome
   browser: chrome
   
-  # Run in headless mode (no GUI)
+  # Always non-headless for interactive mode
   headless: false
   
   # Wait for element to be present (seconds)
@@ -34,20 +31,6 @@ selenium:
   
   # Page load timeout (seconds)
   page_load_timeout: 20
-  
-  # Disable images for faster loading
-  disable_images: false
-
-authentication:
-  # Enable authentication for crawling protected pages
-  enabled: false
-  
-  # Login page URL
-  login_url: "https://katalon-demo-cura.herokuapp.com/profile.php#login"
-  
-  # Credentials
-  username: "John Doe"
-  password: "ThisIsNotAPassword"
   
   # CSS selectors for form fields (customize per site)
   username_field: "input[name='username']"  # or input[name='email'], #username, etc.
