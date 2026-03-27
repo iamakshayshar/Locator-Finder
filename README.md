@@ -1,4 +1,4 @@
-# Website Crawler - Interactive Locator Generator
+# Locator-Finder - Interactive Locator Generator
 
 A Python tool that opens a browser in interactive mode, lets you navigate a website, and automatically captures element locators (XPath/CSS) for each page you visit. Designed for QA engineers and automation testers who need to quickly generate locators for frameworks like Selenium, Cypress, and Playwright.
 
