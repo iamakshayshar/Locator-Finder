@@ -23,7 +23,7 @@ A Python tool that opens a browser in interactive mode, lets you navigate a webs
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/Website-Crawler.git
+git clone https://github.com/iamakshayshar/Website-Crawler.git
 cd Website-Crawler
 
 # Create and activate virtual environment
